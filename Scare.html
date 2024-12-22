@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumpscare Prank</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .hidden {
+            display: none;
+        }
+        #jumpscare {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Jumpscare Prank!</h1>
+    <p>Relax, nothing will happen... Or will it?</p>
+    
+    <!-- Hidden scary image -->
+    <img id="jumpscare" src="scare-jump.jpg" alt="Scary Image" width="1280" height="720">
+
+    <!-- The scary sound will play when the jumpscare happens -->
+    <audio id="scarySound" src="scream.mp3" preload="auto"></audio>
+
+    <script>
+        // Function to trigger the jumpscare
+        function triggerJumpscare() {
+            const jumpscareImage = document.getElementById("jumpscare");
+            const scarySound = document.getElementById("scarySound");
+
+            // Display the jumpscare image
+            jumpscareImage.style.display = "block";
+
+            // Play the scary sound
+            scarySound.play();
+
+            // After a few seconds, hide the image
+            setTimeout(() => {
+                jumpscareImage.style.display = "none";
+            }, 3000); // Hides the image after 3 seconds
+        }
+
+        // Randomly trigger the jumpscare after a delay (5-20 seconds)
+        setTimeout(triggerJumpscare, Math.random() * (20000 - 5000) + 5000);
+    </script>
+
+</body>
+</html>
